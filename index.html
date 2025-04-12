@@ -1,333 +1,163 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>紅葉の町</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="个人博客">
+<!DOCTYPE html><html lang="zh-CNzh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>紅葉の町</title><meta name="author" content="wsatenl"><meta name="copyright" content="wsatenl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="紅葉の町">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="紅葉の町">
 <meta property="og:description" content="个人博客">
 <meta property="og:locale">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
 <meta property="article:author" content="wsatenl">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="紅葉の町" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">紅葉の町</a>
-      </h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '紅葉の町',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">紅葉の町</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">紅葉の町</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/12/%E6%97%A5%E8%AF%AD/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-04-12T05:05:06.870Z" title="Created 2025-04-12 13:05:06">2025-04-12</time></span></div><div class="content">男女の友情は成立する！？第一集 お店　空っぽにしちゃダメじゃん  してしまう 表示一种动作的完成，带有“无意中”、“不小心”或“彻底做了某事”的语感。　 在口语中，简化为「しちゃう」。   这里的「しちゃ」是「しちゃう」的简缩形式   じゃん 「じゃない」的口语简略形式。 意思：用于语尾，带有一种轻微确认的语气，意思是“不是嘛”、“不是吗”。 语感：在口语中，带有一种强调、亲近或略带责备的语气     「見に来てた」 是「見に来ていた」的缩略形式，其中：  「来ていた」：表示过去某个时候“曾经来过”或“过去某段时间内的动作状态”。 在口语中，习惯省略为「来てた」，显得更加自然。   し 词性：接续助词 意思：表示列举理由或补充说明，通常用于并列多个原因或者轻描淡写地补充。 用法：多用于口语中，语气随意。    在这句话中，「し」用于补充上下文，暗示还有其他类似的理由或因素未提及。 ん 「ん」是「の」的口语缩略形式，通常用于解释或补充说明。  「の」的用法：表示说明、强调或为某事提供背景信息。  在口语中，常用「ん」来代替「の」，显得更加随意和自然。  例：  何してるの？ →...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/12/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-04-12T04:47:29.352Z" title="Created 2025-04-12 12:47:29">2025-04-12</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wsatenl</div><div class="author-info-description">个人博客</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/12/%E6%97%A5%E8%AF%AD/" title="Untitled">Untitled</a><time datetime="2025-04-12T05:05:06.870Z" title="Created 2025-04-12 13:05:06">2025-04-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/12/hello-world/" title="Hello World">Hello World</a><time datetime="2025-04-12T04:47:29.352Z" title="Created 2025-04-12 12:47:29">2025-04-12</time></div></div></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-日语" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/04/12/%E6%97%A5%E8%AF%AD/" class="article-date">
-  <time class="dt-published" datetime="2025-04-12T05:05:06.870Z" itemprop="datePublished">2025-04-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <h1 id="男女の友情は成立する！？"><a href="#男女の友情は成立する！？" class="headerlink" title="男女の友情は成立する！？"></a>男女の友情は成立する！？</h1><h2 id="第一集"><a href="#第一集" class="headerlink" title="第一集"></a>第一集</h2><p><img src="C:\Users\12176\AppData\Roaming\Typora\typora-user-images\image-20250409211120503.png" alt="image-20250409211120503"></p>
-<p>お店　空っぽにしちゃダメじゃん</p>
-<ul>
-<li>してしまう<ul>
-<li>表示一种动作的完成，带有“无意中”、“不小心”或“彻底做了某事”的语感。　</li>
-<li>在口语中，简化为「しちゃう」。</li>
-</ul>
-</li>
-<li>这里的「しちゃ」是「しちゃう」的简缩形式</li>
-</ul>
-<ul>
-<li>じゃん</li>
-<li>「じゃない」的口语简略形式。<ul>
-<li><strong>意思</strong>：用于语尾，带有一种轻微确认的语气，意思是“不是嘛”、“不是吗”。</li>
-<li><strong>语感</strong>：在口语中，带有一种强调、亲近或略带责备的语气</li>
-</ul>
-</li>
-</ul>
-<p><img src="C:\Users\12176\AppData\Roaming\Typora\typora-user-images\image-20250409211532516.png" alt="image-20250409211532516"></p>
-<p><strong>「見に来てた」</strong> 是「見に来ていた」的缩略形式，其中：</p>
-<ul>
-<li><strong>「来ていた」</strong>：表示过去某个时候“曾经来过”或“过去某段时间内的动作状态”。</li>
-<li>在口语中，习惯省略为「来てた」，显得更加自然。</li>
-</ul>
-<p><img src="C:\Users\12176\AppData\Roaming\Typora\typora-user-images\image-20250409211712434.png" alt="image-20250409211712434"></p>
-<h4 id="し"><a href="#し" class="headerlink" title="し"></a><strong>し</strong></h4><ul>
-<li><strong>词性</strong>：接续助词</li>
-<li>意思：表示列举理由或补充说明，通常用于并列多个原因或者轻描淡写地补充。<ul>
-<li>用法：多用于口语中，语气随意。</li>
-</ul>
-</li>
-</ul>
-<p>在这句话中，「し」用于补充上下文，暗示还有其他类似的理由或因素未提及。</p>
-<h4 id="ん"><a href="#ん" class="headerlink" title="ん"></a><strong>ん</strong></h4><ul>
-<li><p><strong>「ん」</strong>是「の」的口语缩略形式，通常用于解释或补充说明。</p>
-<ul>
-<li><p><strong>「の」的用法</strong>：表示说明、强调或为某事提供背景信息。</p>
-</li>
-<li><p>在口语中，常用「ん」来代替「の」，显得更加随意和自然。</p>
-</li>
-<li><p>例：</p>
-<ul>
-<li><p><strong>何してるの？ → 何してんの？</strong>（你在做什么？）</p>
-</li>
-<li><p><strong>雨が降ったんだ。</strong>（下雨了啊。）</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="な"><a href="#な" class="headerlink" title="な"></a><strong>な</strong></h4><ul>
-<li><p><strong>「な」</strong>是语气助词，带有一种感慨、强调或轻松随意的语气。</p>
-<ul>
-<li><strong>意思</strong>：表示说话者的主观情感，比如惊讶、遗憾或轻微的不满。</li>
-<li>用法：常用于句尾，显得更加口语化。</li>
-</ul>
-</li>
-<li><p><strong>今日暑いな～。</strong>（今天真热啊～。）</p>
-</li>
-<li><p><strong>いいな～、君は旅行に行けて。</strong>（真好啊，你能去旅行。）</p>
-</li>
-</ul>
-<h4 id="さ"><a href="#さ" class="headerlink" title="さ"></a><strong>さ</strong></h4><ul>
-<li>词性：语气助词，带有一种轻松随意的语气。<ul>
-<li><strong>意思</strong>：在句末使用时，表示强调或引起对方注意。常用于朋友之间的随意对话。</li>
-<li>语气作用<ul>
-<li>增加亲近感，让语句显得更自然。</li>
-<li>表示一种轻松感慨或引出下文。</li>
-</ul>
-</li>
-<li>例：<ul>
-<li><strong>昨日さ、面白い映画を見たよ。</strong>（昨天啊，我看了一部有趣的电影。）</li>
-<li><strong>それがさ、全然違ったんだよ。</strong>（那个啊，完全不一样啊。）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="しな"><a href="#しな" class="headerlink" title="しな"></a><strong>しな</strong></h4><ul>
-<li>词性：动词「する」的命令形的简略形式。<ul>
-<li><strong>「する」的命令形</strong>：しろ（正式）→ しな（更加随意）。</li>
-<li>用法：<ul>
-<li>「しな」是对熟人或关系较亲近的人使用的命令语气，比「しろ」更加柔和。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h3><p>プライバシー 个人隐私</p>
-<p>白状 ー 坦白</p>
-<p>金儲け（かねもうけ）ー 赚钱</p>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              April 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/04/12/%E6%97%A5%E8%AF%AD/" data-id="cm9dr77e600005cuhfuaj42lc" data-title="" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/04/12/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2025-04-12T04:47:29.352Z" itemprop="datePublished">2025-04-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/04/12/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/04/12/hello-world/" data-id="cm9dqjs8c0000e4uhf6p6cv8y" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/04/12/%E6%97%A5%E8%AF%AD/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/12/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 wsatenl<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-04-12T05:18:48.325Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By wsatenl</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
